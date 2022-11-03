@@ -1,4 +1,5 @@
 Tariff comparison
+
 How to build
 
 This will create an executable jar in the build/libs directory: ./gradlew build
