@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 public class BasicElectricityTariff extends Product {
 
-    public BasicElectricityTariff(int consumption){
-        super("Basic Electricity Tariff",consumption);
+    public BasicElectricityTariff(int consumption) {
+        super("Basic Electricity Tariff", consumption);
     }
 
     /**
@@ -19,8 +19,8 @@ public class BasicElectricityTariff extends Product {
      */
     @Override
     public BigDecimal calculationModel(int consumption) {
-        double baseCostMonthly= 5;
-        double baseCostsYearly = baseCostMonthly * 12;
+        double baseCostMonthly = 5.0;
+        double baseCostsYearly = baseCostMonthly * 12.0;
         consumption = Math.max(consumption, 0);
         double consumptionCosts = consumption * 0.22;
         return BigDecimal.valueOf(baseCostsYearly + consumptionCosts);

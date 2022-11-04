@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Getter
 @Setter
-public abstract class Product implements Comparable<Product>  {
+public abstract class Product implements Comparable<Product> {
     private String name;
     private int consumption;
     private BigDecimal annualCost;
@@ -18,10 +18,10 @@ public abstract class Product implements Comparable<Product>  {
     public Product(String name, int consumption) {
         this.name = name;
         this.consumption = consumption;
-        this.annualCost=calculationModel(consumption);
+        this.annualCost = calculationModel(consumption);
     }
 
-    abstract BigDecimal calculationModel(int consumption) ;
+    abstract BigDecimal calculationModel(int consumption);
 
 
     @Override
@@ -44,7 +44,7 @@ public abstract class Product implements Comparable<Product>  {
     public String toString() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
         return "Tarrif name = " + name +
-                ", consumption = " +  formatter.format(consumption) +
+                ", consumption = " + formatter.format(consumption) +
                 ", annualCosts = " + formatter.format(annualCost) +
                 '}';
     }
