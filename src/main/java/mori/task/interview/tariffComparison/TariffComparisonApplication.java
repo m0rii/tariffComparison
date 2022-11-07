@@ -25,6 +25,16 @@ public class TariffComparisonApplication {
         productList.add(new PackagedTarrif(6000));
         Collections.sort(productList);
         productList.forEach(System.out::println);
+
+        /*
+         * Calculation: base costs per year 60€ + consumption costs 22 cent/kWh. Examples below:
+         * Consumption = 3500 kWh/year => Annual costs = 830 €/year (5€ * 12 months = 60 €
+         * base costs + 3500 kWh/year * 22 cent/kWh = 770 € consumption costs)
+         * Consumption = 4500 kWh/year => Annual costs = 1050 €/year (5€ * 12 months = 60 €
+         * base costs + 4500 kWh/year * 22 cent/kWh = 990 € consumption costs)
+         * Consumption = 6000 kWh/year => Annual costs = 1380 €/year (5€ * 12 months = 60 €
+         * base costs + 6000 kWh/year * 22 cent/kWh = 1320 € consumption costs)
+         */
     }
 
 }
