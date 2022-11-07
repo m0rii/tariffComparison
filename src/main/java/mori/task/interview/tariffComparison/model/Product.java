@@ -1,54 +1,39 @@
 package mori.task.interview.tariffComparison.model;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Locale;
-import java.util.Objects;
 
 @Getter
-@Setter
-public abstract class Product implements Comparable<Product>  {
-    private String name;
-    private int consumption;
-    private BigDecimal annualCost;
+@EqualsAndHashCode
+public abstract class Product implements Comparable<Product> {
+    private final String name;
+    private final double consumption;
+    private final BigDecimal annualCost;
 
-    public Product(String name, int consumption) {
+    // use constructor to set variable based on product model
+    public Product(String name, double consumption) {
         this.name = name;
         this.consumption = consumption;
-        this.annualCost=calculationModel(consumption);
+        this.annualCost = calculationModel(consumption);
     }
 
-    abstract BigDecimal calculationModel(int consumption) ;
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Product product = (Product) o;
-
-        return Objects.equals(annualCost, product.annualCost);
-    }
-
-
-    @Override
-    public int hashCode() {
-        return annualCost != null ? annualCost.hashCode() : 0;
-    }
+    //each product type has to declare how to calculate the annual cost based on tariff
+    abstract BigDecimal calculationModel(double consumption);
 
     @Override
     public String toString() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
         return "Tarrif name = " + name +
-                ", consumption = " +  formatter.format(consumption) +
+                ", consumption = " + consumption + " kWh/year" +
                 ", annualCosts = " + formatter.format(annualCost) +
                 '}';
     }
 
+    // using compareTo to get acending order sort
     public int compareTo(Product o) {
         return this.getAnnualCost().compareTo(o.getAnnualCost());
 
